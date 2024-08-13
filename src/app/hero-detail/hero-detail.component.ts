@@ -1,10 +1,9 @@
 import {Component, Input} from '@angular/core';
-import { UpperCasePipe, NgFor, NgIf } from '@angular/common';
-import {Hero} from '../hero.interface'
+import { UpperCasePipe, NgFor, NgIf, Location } from '@angular/common';
 import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
 import { ActivatedRoute } from '@angular/router';
-import { Location } from '@angular/common';
 
+import {Hero} from '../Interfaces/hero.interface'
 import { HeroService } from '../services/hero.service';
 
 @Component({
@@ -22,6 +21,7 @@ export class HeroDetailComponent {
     private location: Location
   ) {}
 
+  // Hero
   @Input() hero?: Hero;
 
   ngOnInit(): void {
@@ -29,7 +29,10 @@ export class HeroDetailComponent {
   }
   
   getHero(): void {
+    // Get route data
     const id = Number(this.route.snapshot.paramMap.get('id'));
+
+    // Get Hero
     this.heroService.getHero(id)
       .subscribe(hero => this.hero = hero);
   }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { InMemoryDbService } from 'angular-in-memory-web-api';
-import { Hero } from './hero.interface';
+import { Hero } from '../Interfaces/hero.interface';
 import { HEROES } from './mock-heros'
 
 @Injectable({

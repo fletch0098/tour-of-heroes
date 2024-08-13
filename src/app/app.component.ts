@@ -1,7 +1,10 @@
+// Angular
 import { Component } from '@angular/core';
 import { RouterOutlet, RouterLink } from '@angular/router';
+
+// Compnents
 import { HeroesComponent } from './heroes/heroes.component'
-import { MessagesComponent } from './messages/messages.component'
+import { MessagesComponent } from './shared/messages/messages.component'
 
 @Component({
   selector: 'app-root',
@@ -11,5 +14,5 @@ import { MessagesComponent } from './messages/messages.component'
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'angular-tour-of-heroes';
+  title = 'Tour of Heroes';
 }

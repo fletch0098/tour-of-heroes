@@ -1,26 +1,25 @@
 import { Component } from '@angular/core';
-import { Hero } from '../hero.interface';
 import { UpperCasePipe, NgFor, NgIf } from '@angular/common';
+import { RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
+
+import { Hero } from '../Interfaces/hero.interface';
 import { HeroService } from '../services/hero.service';
 import { MessageService } from '../services/message.service';
-import { RouterLink } from '@angular/router';
 
-import {HEROES} from '../mock-heros';
 import{HeroDetailComponent} from '../hero-detail/hero-detail.component'
 
 @Component({
   standalone: true,
   selector: 'app-heroes',
-  imports: [UpperCasePipe, FormsModule, NgFor, NgIf, HeroDetailComponent, RouterLink],
+  imports: [UpperCasePipe, FormsModule, NgFor, NgIf, RouterLink, HeroDetailComponent],
   templateUrl: './heroes.component.html',
   styleUrls: ['./heroes.component.scss']
 })
 export class HeroesComponent {
   
+  // Heroes List
   heroes: Hero[] = [];
-
-  selectedHero?: Hero;
 
   constructor(private heroService: HeroService, private messageService: MessageService) { }
 
@@ -47,10 +46,4 @@ export class HeroesComponent {
     this.heroService.deleteHero(hero.id).subscribe();
   }
 
-  
-
-  // onSelect(hero: Hero): void {
-  //   this.selectedHero = hero;
-  //   this.messageService.add(`HeroesComponent: Selected hero id=${hero.id}`);
-  // }
 }

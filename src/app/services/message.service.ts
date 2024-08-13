@@ -4,6 +4,8 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class MessageService {
+
+  // Message List
   messages: string[] = [];
 
   add(message: string) {

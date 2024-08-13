@@ -2,13 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { RouterLink } from '@angular/router';
 import {NgFor, AsyncPipe} from '@angular/common';
-
 import {
   debounceTime, distinctUntilChanged, switchMap
 } from 'rxjs/operators';
 
-import { Hero } from '../hero.interface';
-import { HeroService } from '../services/hero.service';
+import { Hero } from '../../Interfaces/hero.interface';
+import { HeroService } from '../../services/hero.service';
 
 @Component({
   selector: 'app-hero-search',
@@ -18,7 +17,11 @@ import { HeroService } from '../services/hero.service';
   styleUrl: './hero-search.component.scss'
 })
 export class HeroSearchComponent implements OnInit {
+
+  // Matching Heroes
   heroes$!: Observable<Hero[]>;
+
+  // Search
   private searchTerms = new Subject<string>();
 
   constructor(private heroService: HeroService) {}
@@ -40,4 +43,5 @@ export class HeroSearchComponent implements OnInit {
       switchMap((term: string) => this.heroService.searchHeroes(term)),
     );
   }
+
 }

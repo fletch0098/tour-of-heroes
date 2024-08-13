@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {NgFor} from '@angular/common';
-
 import { RouterLink } from '@angular/router';
 
-import { Hero } from '../hero.interface';
-import { HeroService } from '../services/hero.service';
+import { HeroSearchComponent } from '../shared/hero-search/hero-search.component'
 
-import { HeroSearchComponent } from '../hero-search/hero-search.component'
+import { Hero } from '../Interfaces/hero.interface';
+import { HeroService } from '../services/hero.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -17,6 +16,8 @@ import { HeroSearchComponent } from '../hero-search/hero-search.component'
 })
 
 export class DashboardComponent implements OnInit {
+
+  // Top 5 Heroes
   heroes: Hero[] = [];
 
   constructor(private heroService: HeroService) { }
@@ -29,4 +30,5 @@ export class DashboardComponent implements OnInit {
     this.heroService.getHeroes()
       .subscribe(heroes => this.heroes = heroes.slice(1, 5));
   }
+
 }

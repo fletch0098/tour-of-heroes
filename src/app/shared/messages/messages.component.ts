@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NgFor, NgIf } from '@angular/common';
-import { MessageService } from '../services/message.service';
+
+import { MessageService } from '../../services/message.service';
 
 @Component({
   selector: 'app-messages',
