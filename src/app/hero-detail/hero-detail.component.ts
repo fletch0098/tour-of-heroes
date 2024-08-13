@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
-import { HeroService } from '../hero.service';
+import { HeroService } from '../services/hero.service';
 
 @Component({
   selector: 'app-hero-detail',
@@ -36,6 +36,13 @@ export class HeroDetailComponent {
 
   goBack(): void {
     this.location.back();
+  }
+
+  save(): void {
+    if (this.hero) {
+      this.heroService.updateHero(this.hero)
+        .subscribe(() => this.goBack());
+    }
   }
 
 }
